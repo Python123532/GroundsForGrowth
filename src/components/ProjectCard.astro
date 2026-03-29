@@ -7,16 +7,14 @@ interface Props {
     icon?: 'lightbulb' | 'lightning' | 'beaker' | 'code' | 'robot';
 }
 
-const { 
-    title, 
-    description, 
+const {
+    title,
+    description,
     link = '/projects',
     gradient = 'blue',
-    icon = 'lightbulb' // Temp icons, replace with images later
+    icon = 'lightbulb'
 } = Astro.props;
 
-
-// Replace with greenhouse icons
 const icons = {
     lightbulb: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
     lightning: 'M13 10V3L4 14h7v7l9-11h-7z',
@@ -25,25 +23,24 @@ const icons = {
     robot: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z'
 };
 
-// Tailwind workaround for dynamic gradients
 const gradients = {
-  blue: 'bg-linear-to-br from-blue-400 to-indigo-500',
-  purple: 'bg-linear-to-br from-purple-400 to-pink-500',
-  green: 'bg-linear-to-br from-green-400 to-cyan-500',
+    blue: 'bg-linear-to-br from-blue-400 to-indigo-500',
+    purple: 'bg-linear-to-br from-purple-400 to-pink-500',
+    green: 'bg-linear-to-br from-green-400 to-cyan-500',
 };
 
 const gradientClass = gradients[gradient];
 ---
 
-<div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-150 group">
+<div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:shadow-black/40 hover:-translate-y-1 transition-all duration-150 group border border-gray-700">
     <div class={`h-48 ${gradientClass} flex items-center justify-center`}>
         <svg class="w-20 h-20 text-white opacity-75 group-hover:scale-110 transition-transform duration-150" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons[icon]} />
         </svg>
     </div>
     <div class="p-6">
-        <h3 class="font-bold text-xl mb-2 text-gray-900 line-clamp-2">{title}</h3>
-        <p class="text-gray-600 mb-4 line-clamp-3">{description}</p>
-        <a href={link} class="text-indigo-600 font-semibold hover:text-indigo-700 transition-colors duration-150">Learn more →</a>
+        <h3 class="font-bold text-xl mb-2 text-white line-clamp-2">{title}</h3>
+        <p class="text-gray-400 mb-4 line-clamp-3">{description}</p>
+        <a href={link} class="text-indigo-400 font-semibold hover:text-indigo-300 transition-colors duration-150">Learn more →</a>
     </div>
 </div>
